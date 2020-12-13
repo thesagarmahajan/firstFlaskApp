@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
@@ -10,6 +11,17 @@ db = SQLAlchemy()
 @app.route("/")
 def hello():
     return jsonify({"Status":"SUCCESS", "message":"Welcome to REST api with Flask"})
+=======
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+db = SQLAlchemy()
+
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello Motherfuckers!</h1>"
+>>>>>>> cf668c8d186ea1a8f19673a2775be3434a57ff15
 
 #  Send data using POST method and Selecting raw option in body tab of
 #  Postman API Testing tool
@@ -32,6 +44,7 @@ def x_www_form_urlencoded():
     print(request.form.to_dict())
     return jsonify(request.form.to_dict())
 
+<<<<<<< HEAD
 
 # This function returns the HTML template!
 @app.route("/home_page")
@@ -48,5 +61,7 @@ def moduleExample():
 # URL Format: /controller_name/function_name/param1/param2/...../param_n
 # This function will update soon...stay tuned!!!
 
+=======
+>>>>>>> cf668c8d186ea1a8f19673a2775be3434a57ff15
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=9090, debug=True)
