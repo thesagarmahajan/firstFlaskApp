@@ -6,7 +6,8 @@ in almost every project you are doing the same stuff. For example, Database Conn
 
 Creating Modules and libraries etc. 
 
-    If you are shifting from PHP to Flask then this repository will help you to reduce you googling time!
+
+If you are shifting from PHP to Flask then this repository will help you to reduce you googling time!
 
 In this project i am giving example code of all those stuff which you do frequently in every web development
 
