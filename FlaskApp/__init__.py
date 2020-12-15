@@ -1,13 +1,10 @@
 from flask import Flask, request, jsonify, render_template
-from flask_sqlalchemy import SQLAlchemy
-import psycopg2
 
 from some_other_folder.some_other_class import Some_other_class
 from crud import crud
 
 
 app = Flask(__name__)
-db = SQLAlchemy()
 
 # If none of th route gets match with the requested route from browser then this function will get execute
 @app.errorhandler(404)
@@ -32,14 +29,12 @@ def postFormData():
     print(request.form.to_dict())
     return jsonify(request.form.to_dict())
 
-
 #  Send data using POST method and Selecting x-www-form-urlencoded option in body tab of
 #  Postman API Testing tool
 @app.route("/x_www_form_urlencoded", methods=["POST"])
 def x_www_form_urlencoded():
     print(request.form.to_dict())
     return jsonify(request.form.to_dict())
-
 
 # This function returns the HTML template!
 @app.route("/home_page")
@@ -59,13 +54,13 @@ def moduleExample():
 def requestHandler(fun, parameters="/"):
     crudObj = crud()
     if fun=="insert" and request.method=="POST":
-        return crudObj.insert()
+        return crudObj.insert(request.form.to_dict())
     elif fun=="list" and request.method=="GET":
-        return crudObj.list()
+        return crudObj.list(parameters)
     elif fun=="update" and request.method=="POST":
-        return crudObj.update()
+        return crudObj.update(request.form.to_dict(), parameters)
     elif fun=="delete" and request.method=="GET":
-        return crudObj.delete()
+        return crudObj.delete(parameters)
     else:
         return "Invalid Operation or Method!"
         
